@@ -3,6 +3,7 @@
   "version": "0.8.0",
   "description": "The tool for finding, analyzing and removing unused and missed i18n translations in your JavaScript project",
   "type": "module",
+  "types": "types/index.ts",
   "source": "src/index.ts",
   "bin": "bin/i18n-unused.cjs",
   "main": "dist/i18n-unused.cjs",

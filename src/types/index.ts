@@ -16,6 +16,7 @@ export type MissedTranslation = {
   dynamicKeys: string[];
   staticCount: number;
   dynamicCount: number;
+  localePath: string;
 }[];
 
 export type UnusedTranslations = {

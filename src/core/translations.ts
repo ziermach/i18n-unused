@@ -49,7 +49,7 @@ const removeComments = (fileTxt: string): string => {
 
 interface unusedOptions {
   context: boolean;
-  contextSeparator: string,
+  contextSeparator: string;
   ignoreComments: boolean;
   localeFileParser?: ModuleResolver;
   excludeTranslationKey?: string | string[];
@@ -101,7 +101,7 @@ export const collectUnusedTranslations = async (
 
 interface missedOptions {
   context: boolean;
-  contextSeparator: string,
+  contextSeparator: string;
   ignoreComments: boolean;
   localeFileParser?: ModuleResolver;
   excludeTranslationKey?: string | string[];
@@ -124,11 +124,15 @@ export const collectMissedTranslations = async (
   for (const localePath of localesPaths) {
     const locale = await resolveFile(localePath, localeFileParser);
 
-    const flatKeys = [...new Set(generateTranslationsFlatKeys(locale, {
-      excludeKey: excludeTranslationKey,
-      contextSeparator,
-      context,
-    }))];
+    const flatKeys = [
+      ...new Set(
+        generateTranslationsFlatKeys(locale, {
+          excludeKey: excludeTranslationKey,
+          contextSeparator,
+          context,
+        }),
+      ),
+    ];
 
     const filesMissedTranslationsKeys: { [key: string]: string[] } =
       await srcFilesPaths.reduce(async (asyncAcc, filePath) => {
@@ -178,8 +182,6 @@ export const collectMissedTranslations = async (
         dynamicCount: dynamicKeys.length,
       });
     });
-
-
   }
   return {
     translations,

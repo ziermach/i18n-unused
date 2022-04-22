@@ -97,14 +97,17 @@ export const displayMissedTranslations = async (
     },
   );
   missedTranslations.translations.forEach((translation) => {
-    console.log('--------------------------------------------');
+    console.log(
+      '<<<==========================================================>>>',
+    );
     console.log(`Missing translations for : ${translation.filePath}`);
     console.log(`for locale: ${translation.localePath}`);
 
-    const keys = [ ...new Set([...translation.dynamicKeys, ...translation.staticKeys])];
-    console.table(
-      keys.map((key: string) => ({ Key: key })),
-    )
+    console.log('Static Keys: ');
+    console.table(translation.staticKeys.map((key: string) => ({ Key: key })));
+
+    console.log('Dynamic Keys: ');
+    console.table(translation.dynamicKeys.map((key: string) => ({ Key: key })));
   });
 
   console.log(
